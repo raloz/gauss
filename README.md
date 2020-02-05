@@ -17,12 +17,13 @@ You need install:
 
 [![Captura.jpg](https://i.postimg.cc/15Tswq91/Captura.jpg)](https://postimg.cc/56whMjYs)
 
-> Click for disabled path length limit 
+> Click for disabled path length limit
+
 [![Captura1.jpg](https://i.postimg.cc/WpkQCHVC/Captura1.jpg)](https://postimg.cc/V5zGb4dW)
 
 ---
 
-# Clone gauss repository
+## Clone gauss repository
 
 Open a new windows console (cmd) and type:
 
@@ -46,7 +47,7 @@ Gauss needs a few modules for work, install this modules from PIP, type in your 
 
 ## Add gauss path to environment
 
-- This PC" *right click into properties* 
+- This PC *right click into properties* 
 - Click on system advanced settings
 - Go to the adevance settings tab
 - Click on envoronment variables 
@@ -54,3 +55,15 @@ Gauss needs a few modules for work, install this modules from PIP, type in your 
 - Add a new path c:\Users\%username%\AppData\local\gauss
 
 Finally Restart your PC
+
+---
+
+Notes
+
+You can create this scripts/record types:
+
+- Client Script
+- Map/reduce Script
+- Restlet
+- Suitelet
+- Userevent Script
