@@ -86,7 +86,7 @@ def create_account(project):
 
         json.dump(config, _file, indent=4, sort_keys=False)
     _file.close()
-    subprocess.call(['python3', os.path.join(os.path.dirname(os.path.realpath(__file__)),'gauss.py'),'--createproject', project],shell=False)
+    subprocess.call(['python', os.path.join(os.path.dirname(os.path.realpath(__file__)),'gauss.py'),'--createproject', project],shell=True)
 #create_account
 
 def create_script_record():
@@ -159,7 +159,7 @@ def record_in(file_path):
 
 def error_in_log():
     _log = []
-    _marktime = DATETIME.strftime("%s")
+    _marktime = DATETIME.timestamp()
     if(os.path.isfile(os.path.join(CWD,'error.log'))):
         with open(os.path.join(CWD,'error.log')) as log:
             lines = log.readlines()
@@ -168,7 +168,7 @@ def error_in_log():
         #search for mark of time
         for line in lines:
             if(re.match('\d{4}\-\d{2}\-\d{2}', line)):
-                if datetime.datetime.strftime(datetime.datetime.fromisoformat(line[:19]),"%s") >= _marktime:
+                if datetime.datetime.fromisoformat(line[:19]).timestamp() >= _marktime:
                     _log.append(line)
     return _log
 #error_in_log
@@ -191,17 +191,17 @@ if args.createproject is not None:
     ]
     answers = prompt(questions)
     if answers["account"] != AGREGAR:
-        if(os.path.isdir(os.path.join(CWD,_project)) != False):
+        if(os.path.isdir(os.path.join(CWD,_project)) == False):
             #create project from sdfcli NetSuite
-            subprocess.call([SDFCLI,'createproject', '-type', 'ACCOUNTCUSTOMIZATION', '-parentdirectory', CWD, '-projectname', _project],shell=False)
+            subprocess.call([SDFCLI,'createproject', '-type', 'ACCOUNTCUSTOMIZATION', '-parentdirectory', CWD, '-projectname', _project],shell=True)
             #add all dependencies to manifest.xml
-            subprocess.call([SDFCLI,'adddependencies', '-feature', 'SERVERSIDESCRIPTING:required','CUSTOMRECORDS:required', '-project', _project], shell=False)
+            subprocess.call([SDFCLI,'adddependencies', '-feature', 'SERVERSIDESCRIPTING:required','CUSTOMRECORDS:required', '-project', _project], shell=True)
             #create .SDF file for this project
             with open(os.path.join(CWD,_project,'.sdf'),'w+') as file:
                 file.write("account={}\nemail={}\nrole=3\nurl=system.netsuite.com\npass={}".format(config['credentials'][answers["account"]]['accountid'],config['credentials'][answers["account"]]['email'],config['credentials'][answers["account"]]['password']))
             file.close()
             #git commands for this project
-            subprocess.call(['git','init', os.path.join(CWD,_project) ],shell=False)
+            subprocess.call(['git','init', os.path.join(CWD,_project) ],shell=True)
             #create gitignore file for this project
             with open(os.path.join(CWD,_project,'.gitignore'),'w+') as file:
                 file.write(".sdf\n**/error.log\n")
@@ -242,6 +242,7 @@ if args.script is not None:
             entry_point = ["{func}: function(){{\n\n\t\t}},".format(func=function) for function in entry_point['entry_point']]
 
             copyfile(os.path.join(os.path.dirname(os.path.realpath(__file__)),'.template'),os.path.join(CWD,'FileCabinet','SuiteScripts',_subdir,_file))
+            #se crea el archivo js
             with open(os.path.join(CWD,'FileCabinet','SuiteScripts',_subdir,_file),'w+') as file:
                file.write(template.format(author=_email, script_type=config["script_types"][command[0]]["name"], entry_point='\n\t\t'.join(entry_point), script_name=_file))
             file.close()
@@ -258,19 +259,17 @@ if args.upload is not None:
         _error = []
         _path = os.path.join(CWD,'FileCabinet','SuiteScripts',args.upload[0])
         _cmdsdfcli = None 
-        _marktime = DATETIME.strftime('%s')
         with open(os.path.join(CWD,'.sdf'),'r+') as file:
             password = file.readlines()
             file.close()
         password = password[4].split('=')
-
         if os.path.isfile(_path):
             _cmdsdfcli = 'uploadfiles'
         elif os.path.isdir(_path):
             _cmdsdfcli = 'uploadfolders'
-
+        
         if _cmdsdfcli is not None:
-            proc = subprocess.Popen([SDFCLI,_cmdsdfcli,'-paths', '/SuiteScripts/{}'.format(args.upload[0]),'-p',CWD], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            proc = subprocess.Popen([SDFCLI,_cmdsdfcli,'-paths', '/SuiteScripts/{}'.format(args.upload[0]),'-p',CWD], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,shell = True)
 
             proc.stdin.write(password[1].encode())
             proc.stdin.flush()
@@ -292,7 +291,7 @@ if args.upload is not None:
 #============== Deploy accountcustimization project ==============
 if args.deploy:
     if(is_project()):
-        subprocess.call([SDFCLI, 'deploy','-p', CWD], shell=False)
+        subprocess.call([SDFCLI, 'deploy','-p', CWD], shell=True)
     else:
         print("""{color}Error: El comando solo puede ejecutarse dentro de un proyecto{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
         exit()
