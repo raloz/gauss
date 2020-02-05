@@ -223,7 +223,7 @@ if args.script is not None:
             _line = _line[1].split('=')
             _email = _line[1].strip()
             file.close()
-            if _subdir is not '':
+            if _subdir != '':
                 os.makedirs(os.path.join(CWD,'FileCabinet','SuiteScripts',_subdir), exist_ok=True)
 
             with open(os.path.join(os.path.dirname(os.path.realpath(__file__)),'.template'), 'r+') as _template:

@@ -27,7 +27,7 @@ You need install:
 
 Open a new windows console (cmd) and type:
 
-> git clone https://github.com/raloz/gauss.git c:\Users\%username%\AppData\local\gauss
+> ```git clone https://github.com/raloz/gauss.git c:\Users\%username%\AppData\local\gauss```
 
 then run 
 
@@ -58,7 +58,7 @@ Finally Restart your PC
 
 ---
 
-Notes
+# Notes
 
 You can create this scripts/record types:
 
