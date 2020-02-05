@@ -1,0 +1,1779 @@
+{
+    "credentials": {
+        "===[ AGREGAR NUEVAS CREDENCIALES ]===": {
+            "email": null,
+            "password": null,
+            "accountid": "Agregar",
+            "url": null,
+            "role": null
+        }
+    },
+    "custom_libs": [],
+    "script_types": {
+        "userevent": {
+            "name": "UserEventScript",
+            "entry_points": [
+                "beforeLoad",
+                "beforeSubmit",
+                "afterSubmit"
+            ]
+        },
+        "client": {
+            "name": "ClientScript",
+            "entry_points": [
+                "fieldChanged",
+                "lineInit",
+                "pageInit",
+                "postSourcing",
+                "saveRecord",
+                "sublistChanged",
+                "validateDelete",
+                "validateField",
+                "validateInsert",
+                "validateLine"
+            ]
+        },
+        "mapreduce": {
+            "name": "MapreduceScript",
+            "entry_points": [
+                "getInputData",
+                "map",
+                "reduce",
+                "summarize"
+            ]
+        },
+        "restlet": {
+            "name": "Restlet",
+            "entry_point": [
+                "get",
+                "post",
+                "put",
+                "delete"
+            ]
+        },
+        "suitelet": {
+            "name": "Suitelet",
+            "entry_points": [
+                "onRequest"
+            ]
+        }
+    },
+    "record": {
+        "account": {
+            "netsuite": "ACCOUNT",
+            "name": "Account",
+            "id": "account",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ACCOUNT|account)"
+        },
+        "accountingbook": {
+            "netsuite": "ACCOUNTING_BOOK",
+            "name": "Accounting Book",
+            "id": "accountingbook",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ACCOUNTING_BOOK|accountingbook)"
+        },
+        "accountingcontext": {
+            "netsuite": "ACCOUNTING_CONTEXT",
+            "name": "Accounting Context",
+            "id": "accountingcontext",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ACCOUNTING_CONTEXT|accountingcontext)"
+        },
+        "accountingperiod": {
+            "netsuite": "ACCOUNTING_PERIOD",
+            "name": "Accounting Period",
+            "id": "accountingperiod",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ACCOUNTING_PERIOD|accountingperiod)"
+        },
+        "activity": {
+            "netsuite": "ACTIVITY",
+            "name": "Activity",
+            "id": "activity",
+            "category": "Activity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ACTIVITY|activity)"
+        },
+        "advintercompanyjournalentry": {
+            "netsuite": "ADV_INTER_COMPANY_JOURNAL_ENTRY",
+            "name": "Advanced Intercompany Journal Entry",
+            "id": "advintercompanyjournalentry",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ADV_INTER_COMPANY_JOURNAL_ENTRY|advintercompanyjournalentry)"
+        },
+        "aggrfindat": {
+            "netsuite": "AGGR_FIN_DAT"
+        },
+        "amortizationschedule": {
+            "netsuite": "AMORTIZATION_SCHEDULE",
+            "name": "Amortization Schedule",
+            "id": "amortizationschedule",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.AMORTIZATION_SCHEDULE|amortizationschedule)"
+        },
+        "amortizationtemplate": {
+            "netsuite": "AMORTIZATION_TEMPLATE",
+            "name": "Amortization Template",
+            "id": "amortizationtemplate",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.AMORTIZATION_TEMPLATE|amortizationtemplate)"
+        },
+        "assemblybuild": {
+            "netsuite": "ASSEMBLY_BUILD",
+            "name": "Assembly Build",
+            "id": "assemblybuild",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ASSEMBLY_BUILD|assemblybuild)"
+        },
+        "assemblyitem": {
+            "netsuite": "ASSEMBLY_ITEM",
+            "name": "Assembly Item",
+            "id": "assemblyitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ASSEMBLY_ITEM|assemblyitem)"
+        },
+        "assemblyunbuild": {
+            "netsuite": "ASSEMBLY_UNBUILD",
+            "name": "Assembly Unbuild",
+            "id": "assemblyunbuild",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ASSEMBLY_UNBUILD|assemblyunbuild)"
+        },
+        "billingaccount": {
+            "netsuite": "BILLING_ACCOUNT"
+        },
+        "billingaccountbillcycle": {
+            "netsuite": "BILLING_ACCOUNT_BILL_CYCLE"
+        },
+        "billingaccountbillrequest": {
+            "netsuite": "BILLING_ACCOUNT_BILL_REQUEST"
+        },
+        "billingclass": {
+            "netsuite": "BILLING_CLASS",
+            "name": "Billing Class",
+            "id": "billingclass",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.BILLING_CLASS|billingclass)"
+        },
+        "billingratecard": {
+            "netsuite": "BILLING_RATE_CARD",
+            "name": "Billing Rate Card",
+            "id": "billingratecard",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.BILLING_RATE_CARD|billingratecard)"
+        },
+        "billingrevenueevent": {
+            "netsuite": "BILLING_REVENUE_EVENT",
+            "name": "Revenue Recognition Event",
+            "id": "billingrevenueevent",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.BILLING_REVENUE_EVENT|billingrevenueevent)"
+        },
+        "billingschedule": {
+            "netsuite": "BILLING_SCHEDULE",
+            "name": "Billing Schedule",
+            "id": "billingschedule",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.BILLING_SCHEDULE|billingschedule)"
+        },
+        "bin": {
+            "netsuite": "BIN",
+            "name": "Bin",
+            "id": "bin",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.BIN|bin)"
+        },
+        "binitembalance": {
+            "netsuite": "BIN_ITEM_BALANCE"
+        },
+        "bintransfer": {
+            "netsuite": "BIN_TRANSFER",
+            "name": "Bin Transfer",
+            "id": "bintransfer",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.BIN_TRANSFER|bintransfer)"
+        },
+        "binworksheet": {
+            "netsuite": "BIN_WORKSHEET",
+            "name": "Bin Putaway Worksheet",
+            "id": "binworksheet",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.BIN_WORKSHEET|binworksheet)"
+        },
+        "blanketpurchaseorder": {
+            "netsuite": "BLANKET_PURCHASE_ORDER",
+            "name": "Blanket Purchase Order",
+            "id": "blanketpurchaseorder",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.BLANKET_PURCHASE_ORDER|blanketpurchaseorder)"
+        },
+        "bom": {
+            "netsuite": "BOM",
+            "name": "BOM",
+            "id": "bom",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.BOM|bom)"
+        },
+        "bomrevision": {
+            "netsuite": "BOM_REVISION",
+            "name": "BOM Revision",
+            "id": "bomrevision",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.BOM_REVISION|bomrevision)"
+        },
+        "budgetexchangerate": {
+            "netsuite": "BUDGET_EXCHANGE_RATE",
+            "name": "Budget Exchange Rate",
+            "id": "budgetexchangerate",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.BUDGET_EXCHANGE_RATE|budgetexchangerate)"
+        },
+        "bundleinstallationscript": {
+            "netsuite": "BUNDLE_INSTALLATION_SCRIPT"
+        },
+        "calendarevent": {
+            "netsuite": "CALENDAR_EVENT",
+            "name": "Event",
+            "id": "calendarevent",
+            "category": "Activity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CALENDAR_EVENT|calendarevent)"
+        },
+        "campaign": {
+            "netsuite": "CAMPAIGN",
+            "name": "Campaign",
+            "id": "campaign",
+            "category": "Marketing",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CAMPAIGN|campaign)"
+        },
+        "cashrefund": {
+            "netsuite": "CASH_REFUND",
+            "name": "Cash Refund",
+            "id": "cashrefund",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CASH_REFUND|cashrefund)"
+        },
+        "cashsale": {
+            "netsuite": "CASH_SALE",
+            "name": "Cash Sale",
+            "id": "cashsale",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CASH_SALE|cashsale)"
+        },
+        "charge": {
+            "netsuite": "CHARGE",
+            "name": "Charge",
+            "id": "charge",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CHARGE|charge)"
+        },
+        "chargerule": {
+            "netsuite": "CHARGE_RULE",
+            "name": "Project Charge Rule",
+            "id": "chargerule",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CHARGE_RULE|chargerule)"
+        },
+        "check": {
+            "netsuite": "CHECK",
+            "name": "Check",
+            "id": "check",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CHECK|check)"
+        },
+        "classification": {
+            "netsuite": "CLASSIFICATION",
+            "name": "Class",
+            "id": "classification",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CLASSIFICATION|classification)"
+        },
+        "clientscript": {
+            "netsuite": "CLIENT_SCRIPT"
+        },
+        "cmscontent": {
+            "netsuite": "CMS_CONTENT",
+            "name": "CMS Content",
+            "id": "cmscontent",
+            "category": "Web Site",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CMS_CONTENT|cmscontent)"
+        },
+        "cmscontenttype": {
+            "netsuite": "CMS_CONTENT_TYPE",
+            "name": "CMS Content Type",
+            "id": "cmscontenttype",
+            "category": "Web Site",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CMS_CONTENT_TYPE|cmscontenttype)"
+        },
+        "cmspage": {
+            "netsuite": "CMS_PAGE",
+            "name": "CMS Page",
+            "id": "cmspage",
+            "category": "Web Site",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CMS_PAGE|cmspage)"
+        },
+        "comsearchboost": {
+            "netsuite": "COM_SEARCH_BOOST"
+        },
+        "comsearchboosttype": {
+            "netsuite": "COM_SEARCH_BOOST_TYPE"
+        },
+        "comsearchgroupsyn": {
+            "netsuite": "COM_SEARCH_GROUP_SYN"
+        },
+        "comsearchonewaysyn": {
+            "netsuite": "COM_SEARCH_ONE_WAY_SYN"
+        },
+        "commercecategory": {
+            "netsuite": "COMMERCE_CATEGORY",
+            "name": "Commerce Category",
+            "id": "commercecategory",
+            "category": "Website",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.COMMERCE_CATEGORY|commercecategory)"
+        },
+        "competitor": {
+            "netsuite": "COMPETITOR",
+            "name": "Competitor",
+            "id": "competitor",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.COMPETITOR|competitor)"
+        },
+        "consolidatedexchangerate": {
+            "netsuite": "CONSOLIDATED_EXCHANGE_RATE",
+            "name": "Consolidated Exchange Rate",
+            "id": "consolidatedexchangerate",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CONSOLIDATED_EXCHANGE_RATE|consolidatedexchangerate)"
+        },
+        "contact": {
+            "netsuite": "CONTACT",
+            "name": "Contact",
+            "id": "contact",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CONTACT|contact)"
+        },
+        "contactcategory": {
+            "netsuite": "CONTACT_CATEGORY",
+            "name": "Contact Category",
+            "id": "contactcategory",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CONTACT_CATEGORY|contactcategory)"
+        },
+        "contactrole": {
+            "netsuite": "CONTACT_ROLE",
+            "name": "Contact Role",
+            "id": "contactrole",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CONTACT_ROLE|contactrole)"
+        },
+        "costcategory": {
+            "netsuite": "COST_CATEGORY",
+            "name": "Cost Category",
+            "id": "costcategory",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.COST_CATEGORY|costcategory)"
+        },
+        "couponcode": {
+            "netsuite": "COUPON_CODE",
+            "name": "Coupon Code",
+            "id": "couponcode",
+            "category": "Marketing",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.COUPON_CODE|couponcode)"
+        },
+        "creditcardcharge": {
+            "netsuite": "CREDIT_CARD_CHARGE",
+            "name": "Credit Card Charge",
+            "id": "creditcardcharge",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CREDIT_CARD_CHARGE|creditcardcharge)"
+        },
+        "creditcardrefund": {
+            "netsuite": "CREDIT_CARD_REFUND",
+            "name": "Credit Card Refund",
+            "id": "creditcardrefund",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CREDIT_CARD_REFUND|creditcardrefund)"
+        },
+        "creditmemo": {
+            "netsuite": "CREDIT_MEMO",
+            "name": "Credit Memo",
+            "id": "creditmemo",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CREDIT_MEMO|creditmemo)"
+        },
+        "crosschargeable": {
+            "netsuite": "CROSSCHARGEABLE"
+        },
+        "currency": {
+            "netsuite": "CURRENCY",
+            "name": "Currency",
+            "id": "currency",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CURRENCY|currency)"
+        },
+        "customer": {
+            "netsuite": "CUSTOMER",
+            "name": "Customer",
+            "id": "customer",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CUSTOMER|customer)"
+        },
+        "customercategory": {
+            "netsuite": "CUSTOMER_CATEGORY",
+            "name": "Customer Category",
+            "id": "customercategory",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CUSTOMER_CATEGORY|customercategory)"
+        },
+        "customerdeposit": {
+            "netsuite": "CUSTOMER_DEPOSIT",
+            "name": "Customer Deposit",
+            "id": "customerdeposit",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CUSTOMER_DEPOSIT|customerdeposit)"
+        },
+        "customermessage": {
+            "netsuite": "CUSTOMER_MESSAGE",
+            "name": "Customer Message",
+            "id": "customermessage",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CUSTOMER_MESSAGE|customermessage)"
+        },
+        "customerpayment": {
+            "netsuite": "CUSTOMER_PAYMENT",
+            "name": "Customer Payment",
+            "id": "customerpayment",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CUSTOMER_PAYMENT|customerpayment)"
+        },
+        "customerpaymentauthorization": {
+            "netsuite": "CUSTOMER_PAYMENT_AUTHORIZATION"
+        },
+        "customerrefund": {
+            "netsuite": "CUSTOMER_REFUND",
+            "name": "Customer Refund",
+            "id": "customerrefund",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CUSTOMER_REFUND|customerrefund)"
+        },
+        "customerstatus": {
+            "netsuite": "CUSTOMER_STATUS",
+            "name": "Customer Status",
+            "id": "customerstatus",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CUSTOMER_STATUS|customerstatus)"
+        },
+        "customersubsidiaryrelationship": {
+            "netsuite": "CUSTOMER_SUBSIDIARY_RELATIONSHIP",
+            "name": "Customer-Subsidiary Relationship",
+            "id": "customersubsidiaryrelationship",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CUSTOMER_SUBSIDIARY_RELATIONSHIP|customersubsidiaryrelationship)"
+        },
+        "customrecord": {
+            "netsuite": "CUSTOM_RECORD",
+            "id": "customrecord_.*",
+            "regex": "customrecord_.*"
+        },
+        "customtransaction": {
+            "netsuite": "CUSTOM_TRANSACTION"
+        },
+        "deletedrecord": {
+            "netsuite": "DELETED_RECORD"
+        },
+        "department": {
+            "netsuite": "DEPARTMENT",
+            "name": "Department",
+            "id": "department",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.DEPARTMENT|department)"
+        },
+        "deposit": {
+            "netsuite": "DEPOSIT",
+            "name": "Deposit",
+            "id": "deposit",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.DEPOSIT|deposit)"
+        },
+        "depositapplication": {
+            "netsuite": "DEPOSIT_APPLICATION",
+            "name": "Deposit Application",
+            "id": "depositapplication",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.DEPOSIT_APPLICATION|depositapplication)"
+        },
+        "descriptionitem": {
+            "netsuite": "DESCRIPTION_ITEM",
+            "name": "Description Item",
+            "id": "descriptionitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.DESCRIPTION_ITEM|descriptionitem)"
+        },
+        "discountitem": {
+            "netsuite": "DISCOUNT_ITEM",
+            "name": "Discount Item",
+            "id": "discountitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.DISCOUNT_ITEM|discountitem)"
+        },
+        "downloaditem": {
+            "netsuite": "DOWNLOAD_ITEM",
+            "name": "Download Item",
+            "id": "downloaditem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.DOWNLOAD_ITEM|downloaditem)"
+        },
+        "employee": {
+            "netsuite": "EMPLOYEE",
+            "name": "Employee",
+            "id": "employee",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.EMPLOYEE|employee)"
+        },
+        "employeechangerequest": {
+            "netsuite": "EMPLOYEE_CHANGE_REQUEST",
+            "name": "Employee Change Request",
+            "id": "employeechangerequest",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.EMPLOYEE_CHANGE_REQUEST|employeechangerequest)"
+        },
+        "employeechangetype": {
+            "netsuite": "EMPLOYEE_CHANGE_TYPE"
+        },
+        "endtoendtime": {
+            "netsuite": "END_TO_END_TIME"
+        },
+        "entity": {
+            "netsuite": "ENTITY",
+            "name": "Entity",
+            "id": "entity",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ENTITY|entity)"
+        },
+        "entityaccountmapping": {
+            "netsuite": "ENTITY_ACCOUNT_MAPPING"
+        },
+        "estimate": {
+            "netsuite": "ESTIMATE",
+            "name": "Estimate",
+            "id": "estimate",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ESTIMATE|estimate)"
+        },
+        "expenseamortizationevent": {
+            "netsuite": "EXPENSE_AMORTIZATION_EVENT"
+        },
+        "expenseamortplanandschedule": {
+            "netsuite": "EXPENSE_AMORT_PLAN_AND_SCHEDULE"
+        },
+        "expensecategory": {
+            "netsuite": "EXPENSE_CATEGORY",
+            "name": "Expense Category",
+            "id": "expensecategory",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.EXPENSE_CATEGORY|expensecategory)"
+        },
+        "expenseplan": {
+            "netsuite": "EXPENSE_PLAN"
+        },
+        "expensereport": {
+            "netsuite": "EXPENSE_REPORT",
+            "name": "Expense Report",
+            "id": "expensereport",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.EXPENSE_REPORT|expensereport)"
+        },
+        "fairvalueprice": {
+            "netsuite": "FAIR_VALUE_PRICE"
+        },
+        "finrptaggregatefr": {
+            "netsuite": "FIN_RPT_AGGREGATE_F_R"
+        },
+        "fixedamountprojectrevenuerule": {
+            "netsuite": "FIXED_AMOUNT_PROJECT_REVENUE_RULE"
+        },
+        "folder": {
+            "netsuite": "FOLDER",
+            "name": "Folder",
+            "id": "folder",
+            "category": "File Cabinet",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.FOLDER|folder)"
+        },
+        "fulfillmentrequest": {
+            "netsuite": "FULFILLMENT_REQUEST",
+            "name": "Fulfillment Request",
+            "id": "fulfillmentrequest",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.FULFILLMENT_REQUEST|fulfillmentrequest)"
+        },
+        "gatewaynotification": {
+            "netsuite": "GATEWAY_NOTIFICATION"
+        },
+        "genericresource": {
+            "netsuite": "GENERIC_RESOURCE",
+            "name": "Generic Resource",
+            "id": "genericresource",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.GENERIC_RESOURCE|genericresource)"
+        },
+        "giftcertificate": {
+            "netsuite": "GIFT_CERTIFICATE",
+            "name": "Gift Certificate",
+            "id": "giftcertificate",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.GIFT_CERTIFICATE|giftcertificate)"
+        },
+        "giftcertificateitem": {
+            "netsuite": "GIFT_CERTIFICATE_ITEM",
+            "name": "Gift Certificate Item",
+            "id": "giftcertificateitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.GIFT_CERTIFICATE_ITEM|giftcertificateitem)"
+        },
+        "globalaccountmapping": {
+            "netsuite": "GLOBAL_ACCOUNT_MAPPING",
+            "name": "Global Account Mapping",
+            "id": "globalaccountmapping",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.GLOBAL_ACCOUNT_MAPPING|globalaccountmapping)"
+        },
+        "globalinventoryrelationship": {
+            "netsuite": "GLOBAL_INVENTORY_RELATIONSHIP",
+            "name": "Global Inventory Relationship",
+            "id": "globalinventoryrelationship",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.GLOBAL_INVENTORY_RELATIONSHIP|globalinventoryrelationship)"
+        },
+        "gllinesauditlog": {
+            "netsuite": "GL_LINES_AUDIT_LOG"
+        },
+        "glnumberingsequence": {
+            "netsuite": "GL_NUMBERING_SEQUENCE",
+            "name": "GL Audit Numbering Sequence",
+            "id": "glnumberingsequence",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.GL_NUMBERING_SEQUENCE|glnumberingsequence)"
+        },
+        "goal": {
+            "netsuite": "GOAL"
+        },
+        "inboundshipment": {
+            "netsuite": "INBOUND_SHIPMENT",
+            "name": "Inbound Shipment",
+            "id": "inboundshipment",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INBOUND_SHIPMENT|inboundshipment)"
+        },
+        "installment": {
+            "netsuite": "INSTALLMENT"
+        },
+        "intercompanyjournalentry": {
+            "netsuite": "INTER_COMPANY_JOURNAL_ENTRY",
+            "name": "Intercompany Journal Entry",
+            "id": "intercompanyjournalentry",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INTER_COMPANY_JOURNAL_ENTRY|intercompanyjournalentry)"
+        },
+        "intercompanytransferorder": {
+            "netsuite": "INTER_COMPANY_TRANSFER_ORDER",
+            "name": "Intercompany Transfer Order",
+            "id": "intercompanytransferorder",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INTER_COMPANY_TRANSFER_ORDER|intercompanytransferorder)"
+        },
+        "inventoryadjustment": {
+            "netsuite": "INVENTORY_ADJUSTMENT",
+            "name": "Inventory Adjustment",
+            "id": "inventoryadjustment",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INVENTORY_ADJUSTMENT|inventoryadjustment)"
+        },
+        "inventorybalance": {
+            "netsuite": "INVENTORY_BALANCE"
+        },
+        "inventorycostrevaluation": {
+            "netsuite": "INVENTORY_COST_REVALUATION",
+            "name": "Inventory Cost Revaluation",
+            "id": "inventorycostrevaluation",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INVENTORY_COST_REVALUATION|inventorycostrevaluation)"
+        },
+        "inventorycount": {
+            "netsuite": "INVENTORY_COUNT",
+            "name": "Inventory Count",
+            "id": "inventorycount",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INVENTORY_COUNT|inventorycount)"
+        },
+        "inventorydetail": {
+            "netsuite": "INVENTORY_DETAIL",
+            "name": "Inventory Detail",
+            "id": "inventorydetail",
+            "category": "Subrecord",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INVENTORY_DETAIL|inventorydetail)"
+        },
+        "inventoryitem": {
+            "netsuite": "INVENTORY_ITEM",
+            "name": "Inventory Item",
+            "id": "inventoryitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INVENTORY_ITEM|inventoryitem)"
+        },
+        "inventorynumber": {
+            "netsuite": "INVENTORY_NUMBER",
+            "name": "Inventory Number",
+            "id": "inventorynumber",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INVENTORY_NUMBER|inventorynumber)"
+        },
+        "inventorynumberbin": {
+            "netsuite": "INVENTORY_NUMBER_BIN"
+        },
+        "inventorynumberitem": {
+            "netsuite": "INVENTORY_NUMBER_ITEM"
+        },
+        "inventorystatus": {
+            "netsuite": "INVENTORY_STATUS",
+            "name": "Inventory Status",
+            "id": "inventorystatus",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INVENTORY_STATUS|inventorystatus)"
+        },
+        "inventorystatuschange": {
+            "netsuite": "INVENTORY_STATUS_CHANGE",
+            "name": "Inventory Status Change",
+            "id": "inventorystatuschange",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INVENTORY_STATUS_CHANGE|inventorystatuschange)"
+        },
+        "inventorystatuslocation": {
+            "netsuite": "INVENTORY_STATUS_LOCATION"
+        },
+        "inventorytransfer": {
+            "netsuite": "INVENTORY_TRANSFER",
+            "name": "Inventory Transfer",
+            "id": "inventorytransfer",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INVENTORY_TRANSFER|inventorytransfer)"
+        },
+        "invoice": {
+            "netsuite": "INVOICE",
+            "name": "Invoice",
+            "id": "invoice",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INVOICE|invoice)"
+        },
+        "invtnumberitembalance": {
+            "netsuite": "INVT_NUMBER_ITEM_BALANCE"
+        },
+        "issue": {
+            "netsuite": "ISSUE",
+            "name": "Issue",
+            "id": "issue",
+            "category": "Support",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ISSUE|issue)"
+        },
+        "item": {
+            "netsuite": "ITEM",
+            "name": "Item Search",
+            "id": "item",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ITEM|item)"
+        },
+        "itemaccountmapping": {
+            "netsuite": "ITEM_ACCOUNT_MAPPING",
+            "name": "Item Account Mapping",
+            "id": "itemaccountmapping",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ITEM_ACCOUNT_MAPPING|itemaccountmapping)"
+        },
+        "itembinnumber": {
+            "netsuite": "ITEM_BIN_NUMBER"
+        },
+        "itemdemandplan": {
+            "netsuite": "ITEM_DEMAND_PLAN",
+            "name": "Item Demand Plan",
+            "id": "itemdemandplan",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ITEM_DEMAND_PLAN|itemdemandplan)"
+        },
+        "itemfulfillment": {
+            "netsuite": "ITEM_FULFILLMENT",
+            "name": "Item Fulfillment",
+            "id": "itemfulfillment",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ITEM_FULFILLMENT|itemfulfillment)"
+        },
+        "itemgroup": {
+            "netsuite": "ITEM_GROUP",
+            "name": "Item Group",
+            "id": "itemgroup",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ITEM_GROUP|itemgroup)"
+        },
+        "itemlocationconfiguration": {
+            "netsuite": "ITEM_LOCATION_CONFIGURATION",
+            "name": "Item Location Configuration",
+            "id": "itemlocationconfiguration",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ITEM_LOCATION_CONFIGURATION|itemlocationconfiguration)"
+        },
+        "itemreceipt": {
+            "netsuite": "ITEM_RECEIPT",
+            "name": "Item Receipt",
+            "id": "itemreceipt",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ITEM_RECEIPT|itemreceipt)"
+        },
+        "itemrevision": {
+            "netsuite": "ITEM_REVISION",
+            "name": "Item Revision",
+            "id": "itemrevision",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ITEM_REVISION|itemrevision)"
+        },
+        "itemsupplyplan": {
+            "netsuite": "ITEM_SUPPLY_PLAN",
+            "name": "Item Supply Plan",
+            "id": "itemsupplyplan",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ITEM_SUPPLY_PLAN|itemsupplyplan)"
+        },
+        "job": {
+            "netsuite": "JOB",
+            "name": "Project",
+            "id": "job",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.JOB|job)"
+        },
+        "jobstatus": {
+            "netsuite": "JOB_STATUS",
+            "name": "Project Status",
+            "id": "jobstatus",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.JOB_STATUS|jobstatus)"
+        },
+        "jobtype": {
+            "netsuite": "JOB_TYPE",
+            "name": "Project Type",
+            "id": "jobtype",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.JOB_TYPE|jobtype)"
+        },
+        "journalentry": {
+            "netsuite": "JOURNAL_ENTRY",
+            "name": "Journal Entry",
+            "id": "journalentry",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.JOURNAL_ENTRY|journalentry)"
+        },
+        "kititem": {
+            "netsuite": "KIT_ITEM",
+            "name": "Kit Item",
+            "id": "kititem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.KIT_ITEM|kititem)"
+        },
+        "laborbasedprojectrevenuerule": {
+            "netsuite": "LABOR_BASED_PROJECT_REVENUE_RULE",
+            "name": "Project Revenue Rule",
+            "id": "laborbasedprojectrevenuerule",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.LABOR_BASED_PROJECT_REVENUE_RULE|laborbasedprojectrevenuerule)"
+        },
+        "lead": {
+            "netsuite": "LEAD",
+            "name": "Lead",
+            "id": "lead",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.LEAD|lead)"
+        },
+        "location": {
+            "netsuite": "LOCATION",
+            "name": "Location",
+            "id": "location",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.LOCATION|location)"
+        },
+        "lotnumberedassemblyitem": {
+            "netsuite": "LOT_NUMBERED_ASSEMBLY_ITEM",
+            "name": "Lot Numbered Assembly Item",
+            "id": "lotnumberedassemblyitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.LOT_NUMBERED_ASSEMBLY_ITEM|lotnumberedassemblyitem)"
+        },
+        "lotnumberedinventoryitem": {
+            "netsuite": "LOT_NUMBERED_INVENTORY_ITEM",
+            "name": "Lot Numbered Inventory Item",
+            "id": "lotnumberedinventoryitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.LOT_NUMBERED_INVENTORY_ITEM|lotnumberedinventoryitem)"
+        },
+        "manufacturingcosttemplate": {
+            "netsuite": "MANUFACTURING_COST_TEMPLATE",
+            "name": "Manufacturing Cost Template",
+            "id": "manufacturingcosttemplate",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.MANUFACTURING_COST_TEMPLATE|manufacturingcosttemplate)"
+        },
+        "manufacturingoperationtask": {
+            "netsuite": "MANUFACTURING_OPERATION_TASK",
+            "name": "Manufacturing Operation Task",
+            "id": "manufacturingoperationtask",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.MANUFACTURING_OPERATION_TASK|manufacturingoperationtask)"
+        },
+        "manufacturingrouting": {
+            "netsuite": "MANUFACTURING_ROUTING",
+            "name": "Manufacturing Routing",
+            "id": "manufacturingrouting",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.MANUFACTURING_ROUTING|manufacturingrouting)"
+        },
+        "mapreducescript": {
+            "netsuite": "MAP_REDUCE_SCRIPT"
+        },
+        "markupitem": {
+            "netsuite": "MARKUP_ITEM",
+            "name": "Markup Item",
+            "id": "markupitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.MARKUP_ITEM|markupitem)"
+        },
+        "massupdatescript": {
+            "netsuite": "MASSUPDATE_SCRIPT"
+        },
+        "merchandise hierarchylevel": {
+            "netsuite": "MERCHANDISE _HIERARCHY_LEVEL"
+        },
+        "merchandisehierarchynode": {
+            "netsuite": "MERCHANDISE_HIERARCHY_NODE",
+            "name": "Merchandise Hierarchy Node",
+            "id": "merchandisehierarchynode",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.MERCHANDISE_HIERARCHY_NODE|merchandisehierarchynode)"
+        },
+        "merchandisehierarchyversion": {
+            "netsuite": "MERCHANDISE_HIERARCHY_VERSION",
+            "name": "Merchandise Hierarchy Version",
+            "id": "merchandisehierarchyversion",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.MERCHANDISE_HIERARCHY_VERSION|merchandisehierarchyversion)"
+        },
+        "message": {
+            "netsuite": "MESSAGE",
+            "name": "Message",
+            "id": "message",
+            "category": "Communication",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.MESSAGE|message)"
+        },
+        "mfgplannedtime": {
+            "netsuite": "MFG_PLANNED_TIME",
+            "name": "Manufacturing Planned Time",
+            "id": "mfgplannedtime",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.MFG_PLANNED_TIME|mfgplannedtime)"
+        },
+        "nexus": {
+            "netsuite": "NEXUS",
+            "name": "Nexus",
+            "id": "nexus",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.NEXUS|nexus)"
+        },
+        "noninventoryitem": {
+            "netsuite": "NON_INVENTORY_ITEM",
+            "name": "Non-Inventory Part",
+            "id": "noninventoryitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.NON_INVENTORY_ITEM|noninventoryitem)"
+        },
+        "note": {
+            "netsuite": "NOTE",
+            "name": "Note",
+            "id": "note",
+            "category": "Communication",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.NOTE|note)"
+        },
+        "notetype": {
+            "netsuite": "NOTE_TYPE",
+            "name": "Note Type",
+            "id": "notetype",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.NOTE_TYPE|notetype)"
+        },
+        "opportunity": {
+            "netsuite": "OPPORTUNITY",
+            "name": "Opportunity",
+            "id": "opportunity",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.OPPORTUNITY|opportunity)"
+        },
+        "otherchargeitem": {
+            "netsuite": "OTHER_CHARGE_ITEM",
+            "name": "Other Charge Item",
+            "id": "otherchargeitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.OTHER_CHARGE_ITEM|otherchargeitem)"
+        },
+        "othername": {
+            "netsuite": "OTHER_NAME",
+            "name": "Other Name",
+            "id": "othername",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.OTHER_NAME|othername)"
+        },
+        "othernamecategory": {
+            "netsuite": "OTHER_NAME_CATEGORY",
+            "name": "Other Name Category",
+            "id": "othernamecategory",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.OTHER_NAME_CATEGORY|othernamecategory)"
+        },
+        "partner": {
+            "netsuite": "PARTNER",
+            "name": "Partner",
+            "id": "partner",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PARTNER|partner)"
+        },
+        "partnercategory": {
+            "netsuite": "PARTNER_CATEGORY",
+            "name": "Partner Category",
+            "id": "partnercategory",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PARTNER_CATEGORY|partnercategory)"
+        },
+        "paycheck": {
+            "netsuite": "PAYCHECK",
+            "name": "Paycheck",
+            "id": "paycheck",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PAYCHECK|paycheck)"
+        },
+        "paycheckjournal": {
+            "netsuite": "PAYCHECK_JOURNAL",
+            "name": "Paycheck Journal",
+            "id": "paycheckjournal",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PAYCHECK_JOURNAL|paycheckjournal)"
+        },
+        "paymentevent": {
+            "netsuite": "PAYMENT_EVENT"
+        },
+        "paymentinstrument": {
+            "netsuite": "PAYMENT_INSTRUMENT"
+        },
+        "paymentitem": {
+            "netsuite": "PAYMENT_ITEM",
+            "name": "Payment Item",
+            "id": "paymentitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PAYMENT_ITEM|paymentitem)"
+        },
+        "paymentmethod": {
+            "netsuite": "PAYMENT_METHOD",
+            "name": "Payment Method",
+            "id": "paymentmethod",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PAYMENT_METHOD|paymentmethod)"
+        },
+        "payrollitem": {
+            "netsuite": "PAYROLL_ITEM",
+            "name": "Payroll Item",
+            "id": "payrollitem",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PAYROLL_ITEM|payrollitem)"
+        },
+        "pctcompleteprojectrevenuerule": {
+            "netsuite": "PCT_COMPLETE_PROJECT_REVENUE_RULE"
+        },
+        "performancereview": {
+            "netsuite": "PERFORMANCE_REVIEW"
+        },
+        "performancereviewschedule": {
+            "netsuite": "PERFORMANCE_REVIEW_SCHEDULE"
+        },
+        "periodendjournal": {
+            "netsuite": "PERIOD_END_JOURNAL",
+            "name": "Period End Journal",
+            "id": "periodendjournal",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PERIOD_END_JOURNAL|periodendjournal)"
+        },
+        "permission": {
+            "netsuite": "PERMISSION"
+        },
+        "phonecall": {
+            "netsuite": "PHONE_CALL",
+            "name": "Phone Call",
+            "id": "phonecall",
+            "category": "Activity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PHONE_CALL|phonecall)"
+        },
+        "portlet": {
+            "netsuite": "PORTLET"
+        },
+        "pricebook": {
+            "netsuite": "PRICE_BOOK",
+            "name": "Price Book",
+            "id": "pricebook",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PRICE_BOOK|pricebook)"
+        },
+        "pricelevel": {
+            "netsuite": "PRICE_LEVEL",
+            "name": "Price Level",
+            "id": "pricelevel",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PRICE_LEVEL|pricelevel)"
+        },
+        "priceplan": {
+            "netsuite": "PRICE_PLAN",
+            "name": "Price Plan",
+            "id": "priceplan",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PRICE_PLAN|priceplan)"
+        },
+        "pricing": {
+            "netsuite": "PRICING"
+        },
+        "pricinggroup": {
+            "netsuite": "PRICING_GROUP",
+            "name": "Pricing Group",
+            "id": "pricinggroup",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PRICING_GROUP|pricinggroup)"
+        },
+        "projectexpensetype": {
+            "netsuite": "PROJECT_EXPENSE_TYPE",
+            "name": "Project Expense Type",
+            "id": "projectexpensetype",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PROJECT_EXPENSE_TYPE|projectexpensetype)"
+        },
+        "projecttask": {
+            "netsuite": "PROJECT_TASK",
+            "name": "Project Task",
+            "id": "projecttask",
+            "category": "Event",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PROJECT_TASK|projecttask)"
+        },
+        "projecttemplate": {
+            "netsuite": "PROJECT_TEMPLATE",
+            "name": "Project Template",
+            "id": "projecttemplate",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PROJECT_TEMPLATE|projecttemplate)"
+        },
+        "promotioncode": {
+            "netsuite": "PROMOTION_CODE",
+            "name": "Promotion",
+            "id": "promotioncode",
+            "category": "Marketing",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PROMOTION_CODE|promotioncode)"
+        },
+        "prospect": {
+            "netsuite": "PROSPECT",
+            "name": "Prospect",
+            "id": "prospect",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PROSPECT|prospect)"
+        },
+        "purchasecontract": {
+            "netsuite": "PURCHASE_CONTRACT",
+            "name": "Purchase Contract",
+            "id": "purchasecontract",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PURCHASE_CONTRACT|purchasecontract)"
+        },
+        "purchaseorder": {
+            "netsuite": "PURCHASE_ORDER",
+            "name": "Purchase Order",
+            "id": "purchaseorder",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PURCHASE_ORDER|purchaseorder)"
+        },
+        "purchaserequisition": {
+            "netsuite": "PURCHASE_REQUISITION",
+            "name": "Requisition",
+            "id": "purchaserequisition",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PURCHASE_REQUISITION|purchaserequisition)"
+        },
+        "recentrecord": {
+            "netsuite": "RECENT_RECORD"
+        },
+        "resallocationtimeoffconflict": {
+            "netsuite": "RES_ALLOCATION_TIME_OFF_CONFLICT"
+        },
+        "resourceallocation": {
+            "netsuite": "RESOURCE_ALLOCATION",
+            "name": "Resource Allocation",
+            "id": "resourceallocation",
+            "category": "Activities",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.RESOURCE_ALLOCATION|resourceallocation)"
+        },
+        "restlet": {
+            "netsuite": "RESTLET"
+        },
+        "returnauthorization": {
+            "netsuite": "RETURN_AUTHORIZATION",
+            "name": "Return Authorization",
+            "id": "returnauthorization",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.RETURN_AUTHORIZATION|returnauthorization)"
+        },
+        "revenuearrangement": {
+            "netsuite": "REVENUE_ARRANGEMENT",
+            "name": "Revenue Arrangement",
+            "id": "revenuearrangement",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.REVENUE_ARRANGEMENT|revenuearrangement)"
+        },
+        "revenuecommitment": {
+            "netsuite": "REVENUE_COMMITMENT",
+            "name": "Revenue Commitment",
+            "id": "revenuecommitment",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.REVENUE_COMMITMENT|revenuecommitment)"
+        },
+        "revenuecommitmentreversal": {
+            "netsuite": "REVENUE_COMMITMENT_REVERSAL",
+            "name": "Revenue Commitment Reversal",
+            "id": "revenuecommitmentreversal",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.REVENUE_COMMITMENT_REVERSAL|revenuecommitmentreversal)"
+        },
+        "revenueplan": {
+            "netsuite": "REVENUE_PLAN"
+        },
+        "revrecplanandschedule": {
+            "netsuite": "REV_REC_PLAN_AND_SCHEDULE"
+        },
+        "revrecschedule": {
+            "netsuite": "REV_REC_SCHEDULE",
+            "name": "Revenue Recognition Schedule",
+            "id": "revrecschedule",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.REV_REC_SCHEDULE|revrecschedule)"
+        },
+        "revrectemplate": {
+            "netsuite": "REV_REC_TEMPLATE",
+            "name": "Revenue Recognition Template",
+            "id": "revrectemplate",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.REV_REC_TEMPLATE|revrectemplate)"
+        },
+        "role": {
+            "netsuite": "ROLE",
+            "name": "Role",
+            "id": "role",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ROLE|role)"
+        },
+        "salesorder": {
+            "netsuite": "SALES_ORDER",
+            "name": "Sales Order",
+            "id": "salesorder",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SALES_ORDER|salesorder)"
+        },
+        "salesrole": {
+            "netsuite": "SALES_ROLE",
+            "name": "Sales Role",
+            "id": "salesrole",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SALES_ROLE|salesrole)"
+        },
+        "salestaxitem": {
+            "netsuite": "SALES_TAX_ITEM",
+            "name": "Sales Tax Item",
+            "id": "salestaxitem",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SALES_TAX_ITEM|salestaxitem)"
+        },
+        "savedsearch": {
+            "netsuite": "SAVED_SEARCH"
+        },
+        "scheduledscript": {
+            "netsuite": "SCHEDULED_SCRIPT"
+        },
+        "scheduledscriptinstance": {
+            "netsuite": "SCHEDULED_SCRIPT_INSTANCE"
+        },
+        "scriptdeployment": {
+            "netsuite": "SCRIPT_DEPLOYMENT"
+        },
+        "serializedassemblyitem": {
+            "netsuite": "SERIALIZED_ASSEMBLY_ITEM",
+            "name": "Serialized Assembly Item",
+            "id": "serializedassemblyitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SERIALIZED_ASSEMBLY_ITEM|serializedassemblyitem)"
+        },
+        "serializedinventoryitem": {
+            "netsuite": "SERIALIZED_INVENTORY_ITEM",
+            "name": "Serialized Inventory Item",
+            "id": "serializedinventoryitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SERIALIZED_INVENTORY_ITEM|serializedinventoryitem)"
+        },
+        "serviceitem": {
+            "netsuite": "SERVICE_ITEM",
+            "name": "Service",
+            "id": "serviceitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SERVICE_ITEM|serviceitem)"
+        },
+        "shipitem": {
+            "netsuite": "SHIP_ITEM",
+            "name": "Shipping Item",
+            "id": "shipitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SHIP_ITEM|shipitem)"
+        },
+        "shoppingcart": {
+            "netsuite": "SHOPPING_CART",
+            "name": "Shopping Cart",
+            "id": "shoppingcart",
+            "category": "Website",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SHOPPING_CART|shoppingcart)"
+        },
+        "solution": {
+            "netsuite": "SOLUTION",
+            "name": "Solution",
+            "id": "solution",
+            "category": "Support",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SOLUTION|solution)"
+        },
+        "statisticaljournalentry": {
+            "netsuite": "STATISTICAL_JOURNAL_ENTRY",
+            "name": "Statistical Journal Entry",
+            "id": "statisticaljournalentry",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.STATISTICAL_JOURNAL_ENTRY|statisticaljournalentry)"
+        },
+        "storepickupfulfillment": {
+            "netsuite": "STORE_PICKUP_FULFILLMENT",
+            "name": "Store Pickup Fulfillment",
+            "id": "storepickupfulfillment",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.STORE_PICKUP_FULFILLMENT|storepickupfulfillment)"
+        },
+        "subscription": {
+            "netsuite": "SUBSCRIPTION",
+            "name": "Subscription",
+            "id": "subscription",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SUBSCRIPTION|subscription)"
+        },
+        "subscriptionchangeorder": {
+            "netsuite": "SUBSCRIPTION_CHANGE_ORDER",
+            "name": "Change Order",
+            "id": "subscriptionchangeorder",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SUBSCRIPTION_CHANGE_ORDER|subscriptionchangeorder)"
+        },
+        "subscriptionline": {
+            "netsuite": "SUBSCRIPTION_LINE",
+            "name": "Subscription Line",
+            "id": "subscriptionline",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SUBSCRIPTION_LINE|subscriptionline)"
+        },
+        "subscriptionplan": {
+            "netsuite": "SUBSCRIPTION_PLAN",
+            "name": "Subscription Plan",
+            "id": "subscriptionplan",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SUBSCRIPTION_PLAN|subscriptionplan)"
+        },
+        "subscriptionrenewalhistory": {
+            "netsuite": "SUBSCRIPTION_RENEWAL_HISTORY"
+        },
+        "subsidiary": {
+            "netsuite": "SUBSIDIARY",
+            "name": "Subsidiary",
+            "id": "subsidiary",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SUBSIDIARY|subsidiary)"
+        },
+        "subtotalitem": {
+            "netsuite": "SUBTOTAL_ITEM",
+            "name": "Subtotal Item",
+            "id": "subtotalitem",
+            "category": "Item",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SUBTOTAL_ITEM|subtotalitem)"
+        },
+        "suitelet": {
+            "netsuite": "SUITELET"
+        },
+        "suitescriptdetail": {
+            "netsuite": "SUITE_SCRIPT_DETAIL"
+        },
+        "supplychainsnapshot": {
+            "netsuite": "SUPPLY_CHAIN_SNAPSHOT",
+            "name": "Supply Chain Snapshot",
+            "id": "supplychainsnapshot",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SUPPLY_CHAIN_SNAPSHOT|supplychainsnapshot)"
+        },
+        "supplychainsnapshotdetails": {
+            "netsuite": "SUPPLY_CHAIN_SNAPSHOT_DETAILS"
+        },
+        "supportcase": {
+            "netsuite": "SUPPORT_CASE",
+            "name": "Case",
+            "id": "supportcase",
+            "category": "Support",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SUPPORT_CASE|supportcase)"
+        },
+        "systemnote": {
+            "netsuite": "SYSTEM_NOTE",
+            "name": "System Note",
+            "id": "systemnote",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.SYSTEM_NOTE|systemnote)"
+        },
+        "task": {
+            "netsuite": "TASK",
+            "name": "Task",
+            "id": "task",
+            "category": "Activity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TASK|task)"
+        },
+        "taxdetail": {
+            "netsuite": "TAX_DETAIL"
+        },
+        "taxgroup": {
+            "netsuite": "TAX_GROUP",
+            "name": "Tax Group",
+            "id": "taxgroup",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TAX_GROUP|taxgroup)"
+        },
+        "taxperiod": {
+            "netsuite": "TAX_PERIOD",
+            "name": "Tax Period",
+            "id": "taxperiod",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TAX_PERIOD|taxperiod)"
+        },
+        "taxtype": {
+            "netsuite": "TAX_TYPE",
+            "name": "Tax Type",
+            "id": "taxtype",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TAX_TYPE|taxtype)"
+        },
+        "term": {
+            "netsuite": "TERM",
+            "name": "Term",
+            "id": "term",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TERM|term)"
+        },
+        "timesheetapproval": {
+            "netsuite": "TIMESHEET_APPROVAL"
+        },
+        "timeapproval": {
+            "netsuite": "TIME_APPROVAL"
+        },
+        "timebill": {
+            "netsuite": "TIME_BILL",
+            "name": "Time",
+            "id": "timebill",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TIME_BILL|timebill)"
+        },
+        "timeentry": {
+            "netsuite": "TIME_ENTRY"
+        },
+        "timeoffchange": {
+            "netsuite": "TIME_OFF_CHANGE",
+            "name": "Time-Off Change",
+            "id": "timeoffchange",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TIME_OFF_CHANGE|timeoffchange)"
+        },
+        "timeoffplan": {
+            "netsuite": "TIME_OFF_PLAN",
+            "name": "Time-Off Plan",
+            "id": "timeoffplan",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TIME_OFF_PLAN|timeoffplan)"
+        },
+        "timeoffrequest": {
+            "netsuite": "TIME_OFF_REQUEST",
+            "name": "Time-Off Request",
+            "id": "timeoffrequest",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TIME_OFF_REQUEST|timeoffrequest)"
+        },
+        "timeoffrule": {
+            "netsuite": "TIME_OFF_RULE",
+            "name": "Time-Off Rule",
+            "id": "timeoffrule",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TIME_OFF_RULE|timeoffrule)"
+        },
+        "timeofftype": {
+            "netsuite": "TIME_OFF_TYPE",
+            "name": "Time-Off Type",
+            "id": "timeofftype",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TIME_OFF_TYPE|timeofftype)"
+        },
+        "timesheet": {
+            "netsuite": "TIME_SHEET",
+            "name": "Weekly Timesheet",
+            "id": "timesheet",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TIME_SHEET|timesheet)"
+        },
+        "topic": {
+            "netsuite": "TOPIC",
+            "name": "Topic",
+            "id": "topic",
+            "category": "Support",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TOPIC|topic)"
+        },
+        "transaction": {
+            "netsuite": "TRANSACTION",
+            "name": "Transaction Search",
+            "id": "transaction",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TRANSACTION|transaction)"
+        },
+        "transferorder": {
+            "netsuite": "TRANSFER_ORDER",
+            "name": "Transfer Order",
+            "id": "transferorder",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TRANSFER_ORDER|transferorder)"
+        },
+        "uber": {
+            "netsuite": "UBER"
+        },
+        "unitstype": {
+            "netsuite": "UNITS_TYPE",
+            "name": "Unit of Measure",
+            "id": "unitstype",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.UNITS_TYPE|unitstype)"
+        },
+        "usage": {
+            "netsuite": "USAGE",
+            "name": "Usage",
+            "id": "usage",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.USAGE|usage)"
+        },
+        "usereventscript": {
+            "netsuite": "USEREVENT_SCRIPT"
+        },
+        "vendor": {
+            "netsuite": "VENDOR",
+            "name": "Vendor",
+            "id": "vendor",
+            "category": "Entity",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.VENDOR|vendor)"
+        },
+        "vendorbill": {
+            "netsuite": "VENDOR_BILL",
+            "name": "Vendor Bill",
+            "id": "vendorbill",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.VENDOR_BILL|vendorbill)"
+        },
+        "vendorcategory": {
+            "netsuite": "VENDOR_CATEGORY",
+            "name": "Vendor Category",
+            "id": "vendorcategory",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.VENDOR_CATEGORY|vendorcategory)"
+        },
+        "vendorcredit": {
+            "netsuite": "VENDOR_CREDIT",
+            "name": "Vendor Credit",
+            "id": "vendorcredit",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.VENDOR_CREDIT|vendorcredit)"
+        },
+        "vendorpayment": {
+            "netsuite": "VENDOR_PAYMENT",
+            "name": "Vendor Payment",
+            "id": "vendorpayment",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.VENDOR_PAYMENT|vendorpayment)"
+        },
+        "vendorreturnauthorization": {
+            "netsuite": "VENDOR_RETURN_AUTHORIZATION",
+            "name": "Vendor Return Authorization",
+            "id": "vendorreturnauthorization",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.VENDOR_RETURN_AUTHORIZATION|vendorreturnauthorization)"
+        },
+        "vendorsubsidiaryrelationship": {
+            "netsuite": "VENDOR_SUBSIDIARY_RELATIONSHIP",
+            "name": "Vendor-Subsidiary Relationship",
+            "id": "vendorsubsidiaryrelationship",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.VENDOR_SUBSIDIARY_RELATIONSHIP|vendorsubsidiaryrelationship)"
+        },
+        "website": {
+            "netsuite": "WEBSITE",
+            "name": "Website Setup",
+            "id": "website",
+            "category": "Website",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.WEBSITE|website)"
+        },
+        "workflowactionscript": {
+            "netsuite": "WORKFLOW_ACTION_SCRIPT"
+        },
+        "workorder": {
+            "netsuite": "WORK_ORDER",
+            "name": "Work Order",
+            "id": "workorder",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.WORK_ORDER|workorder)"
+        },
+        "workorderclose": {
+            "netsuite": "WORK_ORDER_CLOSE",
+            "name": "Work Order Close",
+            "id": "workorderclose",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.WORK_ORDER_CLOSE|workorderclose)"
+        },
+        "workordercompletion": {
+            "netsuite": "WORK_ORDER_COMPLETION",
+            "name": "Work Order Completion",
+            "id": "workordercompletion",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.WORK_ORDER_COMPLETION|workordercompletion)"
+        },
+        "workorderissue": {
+            "netsuite": "WORK_ORDER_ISSUE",
+            "name": "Work Order Issue",
+            "id": "workorderissue",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.WORK_ORDER_ISSUE|workorderissue)"
+        },
+        "workplace": {
+            "netsuite": "WORKPLACE",
+            "name": "Workplace",
+            "id": "workplace",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.WORKPLACE|workplace)"
+        },
+        "allocationschedule": {
+            "netsuite": "ALLOCATION_SCHEDULE",
+            "name": "Allocation Schedule",
+            "id": "allocationschedule",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ALLOCATION_SCHEDULE|allocationschedule)"
+        },
+        "aschargedprojectrevenuerule": {
+            "netsuite": "AS_CHARGED_PROJECT_REVENUE_RULE"
+        },
+        "bulkownershiptransfer": {
+            "netsuite": "BULK_OWNERSHIP_TRANSFER",
+            "name": "Ownership Transfer",
+            "id": "bulkownershiptransfer",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.BULK_OWNERSHIP_TRANSFER|bulkownershiptransfer)"
+        },
+        "campaignresponse": {
+            "netsuite": "CAMPAIGN_RESPONSE",
+            "name": "Campaign Response",
+            "id": "campaignresponse",
+            "category": "Marketing",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CAMPAIGN_RESPONSE|campaignresponse)"
+        },
+        "campaigntemplate": {
+            "netsuite": "CAMPAIGN_TEMPLATE",
+            "name": "Campaign Template",
+            "id": "campaigntemplate",
+            "category": "Marketing",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.CAMPAIGN_TEMPLATE|campaigntemplate)"
+        },
+        "emailtemplate": {
+            "netsuite": "EMAIL_TEMPLATE",
+            "name": "Email Template",
+            "id": "emailtemplate",
+            "category": "Marketing",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.EMAIL_TEMPLATE|emailtemplate)"
+        },
+        "generaltoken": {
+            "netsuite": "GENERAL_TOKEN",
+            "name": "General Token",
+            "id": "generaltoken",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.GENERAL_TOKEN|generaltoken)"
+        },
+        "intercompallocationschedule": {
+            "netsuite": "INTERCOMP_ALLOCATION_SCHEDULE",
+            "name": "Intercompany Allocation Schedule",
+            "id": "intercompallocationschedule",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.INTERCOMP_ALLOCATION_SCHEDULE|intercompallocationschedule)"
+        },
+        "issueproduct": {
+            "netsuite": "ISSUE_PRODUCT",
+            "name": "Issue Product",
+            "id": "issueproduct",
+            "category": "Support",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ISSUE_PRODUCT|issueproduct)"
+        },
+        "issueproductversion": {
+            "netsuite": "ISSUE_PRODUCT_VERSION"
+        },
+        "labor basedprojectrevenuerule": {
+            "netsuite": "LABOR_ BASED_PROJECT_REVENUE_RULE"
+        },
+        "merchandisehierarchylevel": {
+            "netsuite": "MERCHANDISE_HIERARCHY_LEVEL",
+            "name": "Merchandise Hierarchy Level",
+            "id": "merchandisehierarchylevel",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.MERCHANDISE_HIERARCHY_LEVEL|merchandisehierarchylevel)"
+        },
+        "orderschedule": {
+            "netsuite": "ORDER_SCHEDULE",
+            "name": "Order Schedule",
+            "id": "orderschedule",
+            "category": "Transaction",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.ORDER_SCHEDULE|orderschedule)"
+        },
+        "partnercommissionplan": {
+            "netsuite": "PARTNER_COMMISSION_PLAN"
+        },
+        "paymentcard": {
+            "netsuite": "PAYMENT_CARD",
+            "name": "Payment Card",
+            "id": "paymentcard",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PAYMENT_CARD|paymentcard)"
+        },
+        "paymentcardtoken": {
+            "netsuite": "PAYMENT_CARD_TOKEN",
+            "name": "Payment Card Token",
+            "id": "paymentcardtoken",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.PAYMENT_CARD_TOKEN|paymentcardtoken)"
+        },
+        "reallocateitem": {
+            "netsuite": "REALLOCATE_ITEM"
+        },
+        "receiveinboundshipment": {
+            "netsuite": "RECEIVE_INBOUND_SHIPMENT"
+        },
+        "taxacct": {
+            "netsuite": "TAX_ACCT",
+            "name": "Tax Control Account",
+            "id": "taxacct",
+            "category": "List",
+            "regex": "(\\\"|.?)type(\\\"|.?)(\\:|.?\\:)(.+|.?)(\\.Type\\.TAX_ACCT|taxacct)"
+        }
+    }
+}

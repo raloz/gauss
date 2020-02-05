@@ -1,0 +1,27 @@
+<suitelet scriptid="{scriptid}">
+    <description></description>
+    <isinactive>F</isinactive>
+    <!--El nombre del userevent es obligatorio -->
+    <name>{name}</name>
+    <notifyadmins>F</notifyadmins>
+    <notifyemails></notifyemails>
+    <notifyowner>T</notifyowner>
+    <notifyuser>F</notifyuser>
+    <scriptfile>[/SuiteScripts/{file}]</scriptfile>
+    <scriptdeployments>
+        <!-- Ruta al archivo JS para crear el script en NetSuite [/SuiteScripts/path/to/file.js]   -->
+        <scriptdeployment scriptid="customdeploy_suitelet_{deploy}">
+            <allemployees>F</allemployees>
+            <allpartners>F</allpartners>
+            <allroles>F</allroles>
+            <audslctrole></audslctrole>
+            <eventtype></eventtype>
+            <isdeployed>T</isdeployed>
+            <isonline>F</isonline>
+            <loglevel>DEBUG</loglevel>
+            <runasrole></runasrole>
+            <status>TESTING</status>
+            <title>sup yo</title>
+        </scriptdeployment>
+    </scriptdeployments>
+</suitelet>

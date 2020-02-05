@@ -1,0 +1,14 @@
+/**
+ * @author {author}
+ * @Name {script_name}
+ * @description 
+ * @NApiVersion 2.x
+ * @NScriptType {script_type}
+ */
+
+define([],function(){{
+
+    return {{
+        {entry_point}
+    }}
+}});
