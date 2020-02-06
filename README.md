@@ -15,11 +15,11 @@ You need install:
 > **important!**
 > mark the checkbox for add Python to environment Path
 
-[Captura.jpg](https://postimg.cc/56whMjYs)
+[![Captura.jpg](https://i.postimg.cc/15Tswq91/Captura.jpg)](https://postimg.cc/56whMjYs)
 
 > Click for disabled path length limit
 
-[Captura1.jpg](https://postimg.cc/V5zGb4dW)
+[![Captura1.jpg](https://i.postimg.cc/WpkQCHVC/Captura1.jpg)](https://postimg.cc/V5zGb4dW)
 
 ---
 
@@ -74,7 +74,7 @@ Open a new cmd terminal and type:
 
 > gauss.py --help
 
-[Captura1.jpg](https://postimg.cc/V5zGb4dW)
+[![Captura.jpg](https://i.postimg.cc/vB9XCVb1/Captura.jpg)](https://postimg.cc/62WdvT7w)
 
 *optional*
 
