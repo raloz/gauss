@@ -15,11 +15,11 @@ You need install:
 > **important!**
 > mark the checkbox for add Python to environment Path
 
-[![Captura.jpg](https://i.postimg.cc/15Tswq91/Captura.jpg)](https://postimg.cc/56whMjYs)
+[Captura.jpg](https://postimg.cc/56whMjYs)
 
 > Click for disabled path length limit
 
-[![Captura1.jpg](https://i.postimg.cc/WpkQCHVC/Captura1.jpg)](https://postimg.cc/V5zGb4dW)
+[Captura1.jpg](https://postimg.cc/V5zGb4dW)
 
 ---
 
@@ -68,6 +68,14 @@ You can create this scripts/record types:
 - Suitelet
 - Userevent Script
 
+Type:
+
+Open a new cmd terminal and type:
+
+> gauss.py --help
+
+[Captura1.jpg](https://postimg.cc/V5zGb4dW)
+
 *optional*
 
 You can create keybindings in your **vscode**, justo go to:
@@ -78,7 +86,8 @@ You can create keybindings in your **vscode**, justo go to:
 - Open Keyboard Shortcuts JSON
 - Paste: 
 
-```// Place your key bindings in this file to override the defaults
+```
+// Place your key bindings in this file to override the defaults
 [
     {
         "key": "shift+alt+u",
@@ -94,4 +103,5 @@ You can create keybindings in your **vscode**, justo go to:
           "text": "gauss.py --deploy\n"
         }
     }
-]```
+]
+```
