@@ -223,6 +223,7 @@ if args.script is not None:
             _line = _line[1].split('=')
             _email = _line[1].strip()
             file.close()
+
             if _subdir != '':
                 os.makedirs(os.path.join(CWD,'FileCabinet','SuiteScripts',_subdir), exist_ok=True)
 
@@ -257,7 +258,11 @@ if args.script is not None:
 if args.upload is not None:
     if(is_project()):
         _error = []
-        _path = os.path.join(CWD,'FileCabinet','SuiteScripts',args.upload[0])
+        print(args.upload[0])
+        args.upload[0] = args.upload[0].replace('FileCabinet{slash}SuiteScripts{slash}'.format(slash=os.path.sep),'')
+        print(args.upload[0])
+        _path = os.path.join(CWD,'FileCabinet','SuiteScripts', args.upload[0])
+        print(_path)
         _cmdsdfcli = None 
         with open(os.path.join(CWD,'.sdf'),'r+') as file:
             password = file.readlines()
