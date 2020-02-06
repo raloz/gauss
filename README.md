@@ -31,7 +31,7 @@ Open a new windows console (cmd) and type:
 
 then run 
 
-> python -m pip install --upgrade pip
+> ```python -m pip install --upgrade pip```
 
 for upgrade yor pip version.
 
@@ -41,9 +41,9 @@ for upgrade yor pip version.
 
 Gauss needs a few modules for work, install this modules from PIP, type in your cmd:
 
-> pip install colored
+> ```pip install colored```
 
-> pip install PyInquirer
+> ```pip install PyInquirer```
 
 ## Add gauss path to environment
 
