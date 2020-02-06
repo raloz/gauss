@@ -8,7 +8,7 @@
     <scriptfile>[/SuiteScripts/{file}]</scriptfile>
     <scriptdeployments>
         <!-- Ruta al archivo JS para crear el script en NetSuite [/SuiteScripts/path/to/file.js]   -->
-        <scriptdeployment scriptid="customdeploy_suitelet_{deploy}">
+        <scriptdeployment scriptid="customdeploy_restlet_{deploy}">
             <allemployees>F</allemployees>
             <allpartners>F</allpartners>
             <allroles>F</allroles>
