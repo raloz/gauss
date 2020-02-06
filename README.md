@@ -67,3 +67,31 @@ You can create this scripts/record types:
 - Restlet
 - Suitelet
 - Userevent Script
+
+*optional*
+
+You can create keybindings in your **vscode**, justo go to:
+
+- File
+- Preferences
+- Keyboard shortcuts
+- Open Keyboard Shortcuts JSON
+- Paste: 
+
+```// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "shift+alt+u",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+          "text": "gauss.py --upload ${relativeFile}\n"
+        }
+    },
+    {
+        "key": "ctrl+shift+alt+u",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+          "text": "gauss.py --deploy\n"
+        }
+    }
+]```
