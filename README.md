@@ -1,6 +1,6 @@
 # Gauss for NetSuite
 
-Small tool for manage your NetSuite app **account customization** using sdfcli (SuiteCloud Development Framework), this means that you require Java JRE installed before begin.
+Small tool for managing your NetSuite app **account customization** using sdfcli (SuiteCloud Development Framework).
 
 ## Requirements
 
@@ -13,11 +13,11 @@ You need install:
 
 
 > **important!**
-> mark the checkbox for add Python to environment Path
+> mark the checkbox on add Python to environment Path
 
 [![Captura.jpg](https://i.postimg.cc/15Tswq91/Captura.jpg)](https://postimg.cc/56whMjYs)
 
-> Click for disabled path length limit
+> Click on disabled path length limit
 
 [![Captura1.jpg](https://i.postimg.cc/WpkQCHVC/Captura1.jpg)](https://postimg.cc/V5zGb4dW)
 
@@ -33,13 +33,13 @@ then run
 
 > ```python -m pip install --upgrade pip```
 
-for upgrade yor pip version.
+for upgrading yor pip version.
 
 ---
 
 ## Installing PIP modules
 
-Gauss needs a few modules for work, install this modules from PIP, type in your cmd:
+Gauss needs a few modules for working, install this modules from PIP, type in your cmd:
 
 > ```pip install colored```
 
