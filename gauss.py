@@ -1,3 +1,6 @@
+#! /usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import argparse
 import os
 import json
@@ -13,6 +16,7 @@ from PyInquirer import style_from_dict, Token, prompt, Separator
 parser = argparse.ArgumentParser(prog="gauss", description= '{color}Sincroniza tu proyectos dentro de la cuenta NetSUite{reset}'.format(color=fg('cyan'), reset=attr('reset')), formatter_class=argparse.RawTextHelpFormatter)
 parser.add_argument("-v", "--version",help="Versión actual del script", action="store_true")
 parser.add_argument("-c", "--createproject", nargs="+", help="Crea un nuevo proyecto de tipo ACCOUNTCUSTOMIZATION")
+parser.add_argument("-a", "--addacount", nargs="+", help="Agrega credenciales del una cuenta de Netsuite sin iniciar un projecto")
 parser.add_argument("-s", "--script", nargs="+", help="Create SuiteScripts 2.0 files in directory [userevent, suitelet, scheduled, client, mapreduce, restlet] \nUSAGE:\nmonitor --scriptfile userevent=file1.js,subfolder/file2.js clientscript=file3.js")
 parser.add_argument("-r", "--recordscript", action="store_false", help="")
 parser.add_argument("-u", "--upload", nargs="+", help="Load file/folder into FileCabinet")
@@ -37,7 +41,7 @@ def is_required(current):
     return True if(current != '') else False
 #is_required
 
-def create_account(project):
+def create_account():
     questions = [
         {
             'type': 'input',
@@ -86,7 +90,6 @@ def create_account(project):
 
         json.dump(config, _file, indent=4, sort_keys=False)
     _file.close()
-    subprocess.call(['python', os.path.join(os.path.dirname(os.path.realpath(__file__)),'gauss.py'),'--createproject', project],shell=True)
 #create_account
 
 def create_script_record():
@@ -94,7 +97,7 @@ def create_script_record():
     _script_type = command[0] 
     _file = command[1].split(os.path.sep)[-1]
     _subdir = command[1].replace(_file,'')
-
+    
     if(os.path.isfile(os.path.join(CWD,'FileCabinet','SuiteScripts',_subdir,_file))):
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)),'objects','{}.xml'.format(_script_type)), 'r+') as _template:
             template = _template.read()
@@ -111,7 +114,7 @@ def create_script_record():
         name = prompt(_choose)
         #create customscript xml file
         with open(os.path.join(CWD,'Objects','customscript_{}'.format(_file.replace('.js','.xml'))),'w+') as file:
-            file.write(template.format(scriptid='customscript_{}'.format(_file.replace('.js','')),name=name['name'],file=os.path.join(_subdir,_file),deploy=_file.replace('.js','')))
+            file.write(template.format(scriptid='customscript_{}'.format(_file.replace('.js','')),name=name['name'],file=command[1].replace(os.path.sep,'/'),deploy=_file.replace('.js','')))
         file.close()
     else:
         print("""{color}Error: El archivo de referencia no existe{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
@@ -209,7 +212,9 @@ if args.createproject is not None:
         else:
             print("""{color}Error: No se puede duplicar el nombre de un mismo proyecto{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
     else:
-        create_account(args.createproject[0])
+        create_account()
+        subprocess.call(['python', os.path.join(os.path.dirname(os.path.realpath(__file__)),'gauss.py'),'--createproject', _project],shell=True)
+
 
 #============== create a new suitescript file ==============
 if args.script is not None:
@@ -258,11 +263,8 @@ if args.script is not None:
 if args.upload is not None:
     if(is_project()):
         _error = []
-        print(args.upload[0])
         args.upload[0] = args.upload[0].replace('FileCabinet{slash}SuiteScripts{slash}'.format(slash=os.path.sep),'')
-        print(args.upload[0])
         _path = os.path.join(CWD,'FileCabinet','SuiteScripts', args.upload[0])
-        print(_path)
         _cmdsdfcli = None 
         with open(os.path.join(CWD,'.sdf'),'r+') as file:
             password = file.readlines()
@@ -300,3 +302,8 @@ if args.deploy:
     else:
         print("""{color}Error: El comando solo puede ejecutarse dentro de un proyecto{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
         exit()
+
+#============== Add Netsuite account credentials without project  ==============
+if args.addacount:
+    create_account()
+
