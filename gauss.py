@@ -13,7 +13,7 @@ from PyInquirer import style_from_dict, Token, prompt, Separator
 parser = argparse.ArgumentParser(prog="gauss", description= '{color}Sincroniza tu proyectos dentro de la cuenta NetSUite{reset}'.format(color=fg('cyan'), reset=attr('reset')), formatter_class=argparse.RawTextHelpFormatter)
 parser.add_argument("-v", "--version",help="Versión actual del script", action="store_true")
 parser.add_argument("-c", "--createproject", nargs="+", help="Crea un nuevo proyecto de tipo ACCOUNTCUSTOMIZATION")
-parser.add_argument("-a", "--addacount", nargs="+", help="Agrega credenciales del una cuenta de Netsuite sin iniciar un projecto")
+parser.add_argument("-a", "--addacount", naction="store_true", help="Agrega credenciales del una cuenta de Netsuite sin iniciar un projecto")
 parser.add_argument("-s", "--script", nargs="+", help="Create SuiteScripts 2.0 files in directory [userevent, suitelet, scheduled, client, mapreduce, restlet] \nUSAGE:\nmonitor --scriptfile userevent=file1.js,subfolder/file2.js clientscript=file3.js")
 parser.add_argument("-r", "--recordscript", action="store_false", help="")
 parser.add_argument("-u", "--upload", nargs="+", help="Load file/folder into FileCabinet")
