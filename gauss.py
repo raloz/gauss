@@ -301,6 +301,6 @@ if args.deploy:
         exit()
 
 #============== Add Netsuite account credentials without project  ==============
-if args.addacount:
-    create_account()
+#if args.addacount:
+#   create_account()
 
