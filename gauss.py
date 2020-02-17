@@ -13,7 +13,7 @@ from PyInquirer import style_from_dict, Token, prompt, Separator
 parser = argparse.ArgumentParser(prog="gauss", description= '{color}Sincroniza tu proyectos dentro de la cuenta NetSUite{reset}'.format(color=fg('cyan'), reset=attr('reset')), formatter_class=argparse.RawTextHelpFormatter)
 parser.add_argument("-v", "--version",help="Versión actual del script", action="store_true")
 parser.add_argument("-c", "--createproject", nargs="+", help="Crea un nuevo proyecto de tipo ACCOUNTCUSTOMIZATION")
-#parser.add_argument("-a", "--addacount", naction="store_true", help="Agrega credenciales del una cuenta de Netsuite sin iniciar un projecto")
+parser.add_argument("-a", "--addacount", action="store_true", help="Agrega credenciales del una cuenta de Netsuite sin iniciar un projecto")
 parser.add_argument("-s", "--script", nargs="+", help="Create SuiteScripts 2.0 files in directory [userevent, suitelet, scheduled, client, mapreduce, restlet] \nUSAGE:\nmonitor --scriptfile userevent=file1.js,subfolder/file2.js clientscript=file3.js")
 parser.add_argument("-r", "--recordscript", action="store_false", help="")
 parser.add_argument("-u", "--upload", nargs="+", help="Load file/folder into FileCabinet")
@@ -110,8 +110,8 @@ def create_script_record():
         ]
         name = prompt(_choose)
         #create customscript xml file
-        with open(os.path.join(CWD,'Objects','customscript_{}'.format(_file.toLowerCase().replace('.js','.xml'))),'w+') as file:
-            file.write(template.format(scriptid='customscript_{}'.format(_file.replace('.js','')),name=name['name'],file=command[1].toLowerCase().replace(os.path.sep,'/'),deploy=_file.replace('.js','')))
+        with open(os.path.join(CWD,'Objects','customscript_{}'.format(_file.lower().replace('.js','.xml'))),'w+') as file:
+            file.write(template.format(scriptid='customscript_{}'.format(_file.replace('.js','')),name=name['name'],file=command[1].lower().replace(os.path.sep,'/'),deploy=_file.replace('.js','')))
         file.close()
     else:
         print("""{color}Error: El archivo de referencia no existe{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
@@ -301,6 +301,6 @@ if args.deploy:
         exit()
 
 #============== Add Netsuite account credentials without project  ==============
-#if args.addacount:
-#   create_account()
+if args.addacount:
+    create_account()
 
