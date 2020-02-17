@@ -1,6 +1,3 @@
-#! /usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import argparse
 import os
 import json
@@ -113,8 +110,8 @@ def create_script_record():
         ]
         name = prompt(_choose)
         #create customscript xml file
-        with open(os.path.join(CWD,'Objects','customscript_{}'.format(_file.replace('.js','.xml'))),'w+') as file:
-            file.write(template.format(scriptid='customscript_{}'.format(_file.replace('.js','')),name=name['name'],file=command[1].replace(os.path.sep,'/'),deploy=_file.replace('.js','')))
+        with open(os.path.join(CWD,'Objects','customscript_{}'.format(_file.toLowerCase().replace('.js','.xml'))),'w+') as file:
+            file.write(template.format(scriptid='customscript_{}'.format(_file.replace('.js','')),name=name['name'],file=command[1].toLowerCase().replace(os.path.sep,'/'),deploy=_file.replace('.js','')))
         file.close()
     else:
         print("""{color}Error: El archivo de referencia no existe{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
@@ -276,7 +273,7 @@ if args.upload is not None:
             _cmdsdfcli = 'uploadfolders'
         
         if _cmdsdfcli is not None:
-            proc = subprocess.Popen([SDFCLI,_cmdsdfcli,'-paths', '/SuiteScripts/{}'.format(args.upload[0]),'-p',CWD], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,shell = True)
+            proc = subprocess.Popen([SDFCLI,_cmdsdfcli,'-paths', '/SuiteScripts/{}'.format(args.upload[0]),'-p',CWD], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,shell=True)
 
             proc.stdin.write(password[1].encode())
             proc.stdin.flush()
