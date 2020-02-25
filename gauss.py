@@ -129,30 +129,6 @@ def get_jsfiles():
 
     return files
 #get_jsfiles
-
-def record_in(file_path):
-    dirty = "(type|:|.*\.Type\.|\\\")"
-    search = [config['record'][record]['regex'] for record in config['record'] if 'regex' in config['record'][record]]
-    with open(file_path,'r+') as current:
-        lines = current.readlines()
-        current.close()
-    #all matches from general regex
-    match = [x.strip() for x in lines if any(re.search(r,x) for r in search)]
-    result = {}
-    #get type, record id from all record used in js file
-    for record in config['record']:
-        search = ["{},".format(config['record'][record]['netsuite']),"{}\"".format(config['record'][record]['id'] if 'id' in config['record'][record] else '--')]
-        inlist = [y.strip() for y in match if any(re.search(s,y) for s in search)]
-        if len(inlist) > 0:
-            for item in inlist:
-                _recordid = re.sub(dirty, '', item)
-                _recordid = re.sub(('[//",\']'), '', _recordid)
-                #_recordid = re.sub(('\_'), ' ', _recordid)
-                try:
-                    if _recordid.lower().strip() not in result[config['record'][record]['category'] if 'category' in config['record'][record] else 'Other']: 
-                        result[config['record'][record]['category'] if 'category' in config['record'][record] else 'Other'].append(_recordid.lower().strip())
-                except:
-                    result[config['record'][record]['category'] if 'category' in config['record'][record] else 'Other'] = [_recordid.lower().strip()]
     
     return result
 #create_records_log
@@ -201,7 +177,7 @@ if args.createproject is not None:
                 file.write("account={}\nemail={}\nrole=3\nurl=system.netsuite.com\npass={}".format(config['credentials'][answers["account"]]['accountid'],config['credentials'][answers["account"]]['email'],config['credentials'][answers["account"]]['password']))
             file.close()
             #git commands for this project
-            subprocess.call(['git','init', os.path.join(CWD,_project) ],shell=True)
+            #subprocess.call(['git','init', os.path.join(CWD,_project) ],shell=True)
             #create gitignore file for this project
             with open(os.path.join(CWD,_project,'.gitignore'),'w+') as file:
                 file.write(".sdf\n**/error.log\n")
@@ -285,6 +261,7 @@ if args.upload is not None:
                 for item in _error:
                     print("""{color}{error}{reset}""".format(color=fg('yellow'),error=item, reset=attr('reset')))
             else:
+                print("""{color}{today}{reset}""".format(color=fg('green'), reset=attr('reset'), today=datetime.datetime.today()))
                 print("""{color}Success: Se ha actualizado el archivo{reset}""".format(color=fg('cyan'), reset=attr('reset')))                   
         else:
             print("""{color}Error: El comando solo puede ejecutarse sobre archivos y rectorios regulares{reset}""".format(color=fg('yellow'), reset=attr('reset')))
