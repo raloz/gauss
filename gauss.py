@@ -4,6 +4,7 @@ import json
 import re
 import subprocess
 import datetime
+import tempfile
 from shutil import copyfile
 from colored import fg, bg, attr
 from PyInquirer import style_from_dict, Token, prompt, Separator
@@ -15,9 +16,10 @@ parser.add_argument("-v", "--version",help="Versión actual del script", action=
 parser.add_argument("-c", "--createproject", nargs="+", help="Crea un nuevo proyecto de tipo ACCOUNTCUSTOMIZATION")
 parser.add_argument("-a", "--addacount", action="store_true", help="Agrega credenciales del una cuenta de Netsuite sin iniciar un projecto")
 parser.add_argument("-s", "--script", nargs="+", help="Create SuiteScripts 2.0 files in directory [userevent, suitelet, scheduled, client, mapreduce, restlet] \nUSAGE:\nmonitor --scriptfile userevent=file1.js,subfolder/file2.js clientscript=file3.js")
-parser.add_argument("-r", "--recordscript", action="store_false", help="")
-parser.add_argument("-u", "--upload", nargs="+", help="Load file/folder into FileCabinet")
+parser.add_argument("-r", "--norecordscript", action="store_false", help="Crea un script sin scriptrecord asociado")
+parser.add_argument("-u", "--upload", nargs="+", help="Carga archivos/folders dentro de tu FileCabinet")
 parser.add_argument("-d", "--deploy", action="store_true", help="Deploy project into NetSuite")
+parser.add_argument("--diff", nargs="+", help="Compara el archivo local contra el archivo actual del FileCabinet")
 
 args = parser.parse_args()
 # global variables/constants
@@ -129,8 +131,7 @@ def get_jsfiles():
 
     return files
 #get_jsfiles
-    
-    return result
+
 #create_records_log
 
 def error_in_log():
@@ -148,6 +149,16 @@ def error_in_log():
                     _log.append(line)
     return _log
 #error_in_log
+
+def get_passport_from_sdf():
+    with open(os.path.join(CWD,'.sdf'),'r+') as file:
+        lines = file.readlines()
+    file.close()
+
+    passport = [(item.split('=')[0], item.split('=')[1].replace('\n','')) for item in lines]
+    passport = dict(passport)
+    return passport
+#get_credentials_from_sdf
 
 #============== check for --version or -V ==============
 if args.version:
@@ -226,7 +237,7 @@ if args.script is not None:
                file.write(template.format(author=_email, script_type=config["script_types"][command[0]]["name"], entry_point='\n\t\t'.join(entry_point), script_name=_file))
             file.close()
             #se crea el record script
-            if args.recordscript:
+            if args.norecordscript:
                 create_script_record()
     else:
         print("""{color}Error: El comando solo puede ejecutarse dentro de un proyecto{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
@@ -281,3 +292,11 @@ if args.deploy:
 if args.addacount:
     create_account()
 
+#============== Compare local file vs FileCabinet file  ==============
+if args.diff:
+    args.diff[0] = args.diff[0].replace('FileCabinet{slash}SuiteScripts{slash}'.format(slash=os.path.sep),'')
+    _local = os.path.join(CWD,'FileCabinet','SuiteScripts', args.diff[0])
+    passport = get_passport_from_sdf()
+    
+    subprocess.call(['python', os.path.join(os.path.dirname(os.path.realpath(__file__)),'nsoap','netsuite.py'), os.path.join('SuiteScripts',args.diff[0]), "{}".format(passport['email']), '\"{}\"'.format(passport['pass']), "{}".format(passport['account']) ],shell=True)
+    subprocess.call(['code','--diff', _local , os.path.join(tempfile.gettempdir(), args.diff[0].split(os.path.sep)[-1] )] ,shell=True)
