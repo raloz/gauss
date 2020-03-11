@@ -1,0 +1,9 @@
+<scheduledscript scriptid="{scriptid}">
+    <description>Script Record {file}</description>
+    <isinactive>F</isinactive>
+    <!--El nombre del userevent es obligatorio -->
+    <name>{name}</name>
+    <notifyowner>T</notifyowner>
+    <!-- Ruta al archivo JS para crear el script en NetSuite [/SuiteScripts/path/to/file.js]   -->
+    <scriptfile>[/SuiteScripts/{file}]</scriptfile>
+</scheduledscript>
