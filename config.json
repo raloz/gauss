@@ -10,6 +10,12 @@
     },
     "custom_libs": [],
     "script_types": {
+        "scheduled": {
+            "name": "ScheduledScript",
+            "entry_points": [
+                "execute"
+            ]
+        },
         "userevent": {
             "name": "UserEventScript",
             "entry_points": [
