@@ -50,7 +50,7 @@ Gauss needs a few modules for working, install this modules from PIP, type in yo
 - This PC *right click into properties* 
 - Click on system advanced settings
 - Go to the adevance settings tab
-- Click on envoronment variables 
+- Click on environment variables 
 - Select Path variable and click on edit button to add gauss path
 - Add a new path c:\Users\%username%\AppData\local\gauss
 
