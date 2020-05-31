@@ -1,5 +1,19 @@
 {
     "credentials": {
+        "huffman": {
+            "email": "octavio.lopez@beexponential.com.mx",
+            "password": "56B^QW6QufR@",
+            "accountid": "TSTDRV2249182",
+            "url": "system.netsuite.com",
+            "role": 3
+        },
+        "chapur": {
+            "email": "octavio.lopez@beexponential.com.mx",
+            "password": "56B^QW6QufR@",
+            "accountid": "5256282_SB2",
+            "url": "system.netsuite.com",
+            "role": 3
+        },
         "===[ AGREGAR NUEVAS CREDENCIALES ]===": {
             "email": null,
             "password": null,
@@ -50,7 +64,7 @@
         },
         "restlet": {
             "name": "Restlet",
-            "entry_point": [
+            "entry_points": [
                 "get",
                 "post",
                 "put",

@@ -266,6 +266,7 @@ if args.upload is not None:
             proc.stdin.flush()
 
             stdout, stderr = proc.communicate()
+            print(stdout)
             _error = error_in_log()
             if len(_error) > 0:
                 print("""{color}ERROR: No se ha podido realizar la carga{reset}""".format(color=fg('red'), reset=attr('reset')))                   
