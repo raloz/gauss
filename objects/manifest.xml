@@ -1,0 +1,9 @@
+<manifest projecttype="ACCOUNTCUSTOMIZATION">
+  <projectname>{projectname}</projectname>
+  <frameworkversion>1.0</frameworkversion>
+  <dependencies>
+    <features>
+     {features}
+    </features>
+  </dependencies>
+</manifest>
