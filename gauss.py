@@ -9,7 +9,6 @@ from shutil import copyfile
 from colored import fg, bg, attr
 from PyInquirer import style_from_dict, Token, prompt, Separator
 
-
 # initiate the parser
 parser = argparse.ArgumentParser(prog="gauss", description= '{color}Sincroniza tu proyectos dentro de la cuenta NetSUite{reset}'.format(color=fg('cyan'), reset=attr('reset')), formatter_class=argparse.RawTextHelpFormatter)
 parser.add_argument("-v", "--version",help="Versión actual del script", action="store_true")
@@ -19,6 +18,7 @@ parser.add_argument("-s", "--script", nargs="+", help="Create SuiteScripts 2.0 f
 parser.add_argument("-r", "--norecordscript", action="store_false", help="Crea un script sin scriptrecord asociado")
 parser.add_argument("-u", "--upload", nargs="+", help="Carga archivos/folders dentro de tu FileCabinet")
 parser.add_argument("-d", "--deploy", action="store_true", help="Deploy project into NetSuite")
+parser.add_argument("-ch", "--check", action="store_true", help="Validate project into NetSuite")
 parser.add_argument("--diff", nargs="+", help="Compara el archivo local contra el archivo actual del FileCabinet")
 
 args = parser.parse_args()
@@ -111,10 +111,13 @@ def create_script_record():
             }
         ]
         name = prompt(_choose)
-        #create customscript xml file
-        with open(os.path.join(CWD,'Objects','customscript_{}'.format(_file.lower().replace('.js','.xml'))),'w+') as file:
-            file.write(template.format(scriptid='customscript_{}'.format(_file.replace('.js','')),name=name['name'],file=command[1].lower().replace(os.path.sep,'/'),deploy=_file.replace('.js','')))
-        file.close()
+        try:
+            #create customscript xml file
+            with open(os.path.join(CWD,'Objects','customscript_{}'.format(_file.lower().replace('.js','.xml'))),'w+') as file:
+                file.write(template.format(scriptid='customscript_{}'.format(_file[0:25].replace('.js','')),name=name['name'],file=command[1].lower().replace(os.path.sep,'/'),deploy=_file.replace('.js','')))
+            file.close()
+        except:
+            print("""{color}Error: Ups! no se ha podido crear el scriptrecord{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
     else:
         print("""{color}Error: El archivo de referencia no existe{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
         exit()
@@ -131,8 +134,6 @@ def get_jsfiles():
 
     return files
 #get_jsfiles
-
-#create_records_log
 
 def error_in_log():
     _log = []
@@ -160,6 +161,16 @@ def get_passport_from_sdf():
     return passport
 #get_credentials_from_sdf
 
+def create_manifest(projectname, feature):
+    str_feature = ''
+    for el in feature:
+        str_feature += ' <feature required="true">{}</feature>\n'.format(el)
+    with open(os.path.join(os.path.dirname(os.path.realpath(__file__)),'objects','manifest.xml'.format()), 'r+') as _template:
+        manifest = _template.read().format(projectname=projectname, features=str_feature)
+    with open(os.path.join(CWD,projectname,'manifest.xml'), 'w+') as file:
+        file.write(manifest)
+#create_manifest
+
 #============== check for --version or -V ==============
 if args.version:
     print("""{color}Sincroniza tu proyectos dentro de la cuenta NetSUite{reset}""".format(color=fg('yellow'), reset=attr('reset')))
@@ -181,17 +192,15 @@ if args.createproject is not None:
         if(os.path.isdir(os.path.join(CWD,_project)) == False):
             #create project from sdfcli NetSuite
             subprocess.call([SDFCLI,'createproject', '-type', 'ACCOUNTCUSTOMIZATION', '-parentdirectory', CWD, '-projectname', _project],shell=True)
-            #add all dependencies to manifest.xml
-            subprocess.call([SDFCLI,'adddependencies', '-feature', 'SERVERSIDESCRIPTING:required','CUSTOMRECORDS:required', '-project', _project], shell=True)
+            #add initial dependencies to manifest.xml
+            create_manifest(_project,['SERVERSIDESCRIPTING','CUSTOMRECORDS'])
             #create .SDF file for this project
             with open(os.path.join(CWD,_project,'.sdf'),'w+') as file:
                 file.write("account={}\nemail={}\nrole=3\nurl=system.netsuite.com\npass={}".format(config['credentials'][answers["account"]]['accountid'],config['credentials'][answers["account"]]['email'],config['credentials'][answers["account"]]['password']))
             file.close()
-            #git commands for this project
-            #subprocess.call(['git','init', os.path.join(CWD,_project) ],shell=True)
-            #create gitignore file for this project
+            #create gitignore file, for ignore error logs and .sdf for security
             with open(os.path.join(CWD,_project,'.gitignore'),'w+') as file:
-                file.write(".sdf\n**/error.log\n")
+                file.write("**/.sdf\n**/error.log\n")
             file.close()
         else:
             print("""{color}Error: No se puede duplicar el nombre de un mismo proyecto{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
@@ -205,8 +214,12 @@ if args.script is not None:
     if(is_project()):
         for arg in args.script:
             command = arg.split('=')
-            _file = command[1].split(os.path.sep)[-1] 
-            _subdir = command[1].replace(_file,'')
+            try:
+                _file = command[1].split(os.path.sep)[-1] 
+                _subdir = command[1].replace(_file,'')
+            except IndexError:
+                print("""{color}Error: Error en el parametro srcript no tiene el formato correcto{reset}""".format(color=fg('red'), reset=attr('reset')))
+                exit()
             with open(os.path.join(CWD,'.sdf'),'r+') as file:
                 _line = file.readlines()
             _line = _line[1].split('=')
@@ -301,3 +314,11 @@ if args.diff:
     
     subprocess.call(['python', os.path.join(os.path.dirname(os.path.realpath(__file__)),'nsoap','netsuite.py'), os.path.join('SuiteScripts',args.diff[0]), "{}".format(passport['email']), '\"{}\"'.format(passport['pass']), "{}".format(passport['account']) ],shell=True)
     subprocess.call(['code','--diff', _local , os.path.join(tempfile.gettempdir(), args.diff[0].split(os.path.sep)[-1] )] ,shell=True)
+
+#============== Check and validate project  ==============
+if args.check:
+    if(is_project()):
+        subprocess.call([SDFCLI, 'validate','-p', CWD], shell=True)
+    else:
+        print("""{color}Error: El comando solo puede ejecutarse dentro de un proyecto{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
+        exit()
