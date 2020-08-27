@@ -19,6 +19,7 @@ parser.add_argument("-r", "--norecordscript", action="store_false", help="Crea u
 parser.add_argument("-u", "--upload", nargs="+", help="Carga archivos/folders dentro de tu FileCabinet")
 parser.add_argument("-d", "--deploy", action="store_true", help="Deploy project into NetSuite")
 parser.add_argument("-ch", "--check", action="store_true", help="Validate project into NetSuite")
+parser.add_argument("-i", "--importobject", nargs="+", help="Import object from NetSuite")
 parser.add_argument("--diff", nargs="+", help="Compara el archivo local contra el archivo actual del FileCabinet")
 
 args = parser.parse_args()
@@ -319,6 +320,14 @@ if args.diff:
 if args.check:
     if(is_project()):
         subprocess.call([SDFCLI, 'validate','-p', CWD], shell=True)
+    else:
+        print("""{color}Error: El comando solo puede ejecutarse dentro de un proyecto{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
+        exit()
+
+#============== Import object from Netsuite  ==============
+if args.importobject:
+    if(is_project()):
+        subprocess.call([SDFCLI, 'importobjects', '-destinationfolder', '/Objects', '-p', CWD, '-type', 'ALL',  '-scriptid', args.importobject[0] ], shell=True)
     else:
         print("""{color}Error: El comando solo puede ejecutarse dentro de un proyecto{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
         exit()
