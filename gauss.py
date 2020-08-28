@@ -298,7 +298,7 @@ if args.upload is not None:
 #============== Deploy accountcustimization project ==============
 if args.deploy:
     if(is_project()):
-        subprocess.call([SDFCLI, 'deploy','-p', CWD], shell=True)
+        subprocess.call([SDFCLI, 'deploy','-p', CWD, '-accountspecificvalues', 'WARNING'], shell=True)
     else:
         print("""{color}Error: El comando solo puede ejecutarse dentro de un proyecto{reset}""".format(color=fg('yellow'), reset=attr('reset'))) 
         exit()
